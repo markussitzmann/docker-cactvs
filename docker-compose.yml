@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+
+  base:
+    image: docker-cactvs:latest
+    container_name: docker-cactvs-container
+    build:
+      context: .
+      args:
+        build_tag: ${CACTVS_VERSION}
+        conda_py: ${CONDA_PY}
+        conda_package: ${CONDA_PACKAGE}
+        cactvs_version: ${CACTVS_VERSION}
+        cactvs_package: ${CACTVS_PACKAGE}
+    environment:
+      - CACTVS_UID
+      - CACTVS_GID

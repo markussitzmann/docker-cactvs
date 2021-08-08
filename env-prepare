@@ -1,0 +1,12 @@
+#!/bin/bash
+set -e
+
+CUID="$(id -u)"
+CGID="$(id -g)"
+
+cp cactvs.env .env
+
+sed -i -e "s/@CACTVS_UID/${CUID}/g" .env
+sed -i -e "s/@CACTVS_GID/${CGID}/g" .env
+
+
