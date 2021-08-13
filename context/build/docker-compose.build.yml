@@ -1,0 +1,45 @@
+version: '3.9'
+
+services:
+
+  base:
+    image: docker-cactvs-base:${CACTVS_VERSION}
+    #container_name: docker-cactvs-container
+    build:
+      context: build/base
+      args:
+        cactvs_package: ${CACTVS_PACKAGE}
+    environment:
+      - CACTVS_UID
+      - CACTVS_GID
+
+  cactvs-conda:
+    image: docker-cactvs-conda:${CACTVS_VERSION}
+    #container_name: docker-cactvs-container
+    depends_on:
+      - base
+    build:
+      context: build/cactvs-conda
+      args:
+        build_tag: ${CACTVS_VERSION}
+        conda_py: ${CONDA_PY}
+        conda_package: ${CONDA_PACKAGE}
+        cactvs_version: ${CACTVS_VERSION}
+        cactvs_package: ${CACTVS_PACKAGE}
+    environment:
+      - CACTVS_UID
+      - CACTVS_GID
+
+  cactvs:
+    image: docker-cactvs:${CACTVS_VERSION}
+    #container_name: docker-cactvs-container
+    depends_on:
+      - base
+    build:
+      context: build/cactvs
+      args:
+        build_tag: ${CACTVS_VERSION}
+        cactvs_version: ${CACTVS_VERSION}
+    environment:
+      - CACTVS_UID
+      - CACTVS_GID

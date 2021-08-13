@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+
+  cspy:
+    image: docker-cactvs:${CACTVS_VERSION}
+    #container_name: docker-cactvs-container
+    container_name: ${CACTVS_VERSION}
+    volumes:
+      - ${CACTVS_HOME}:/home/app
+    environment:
+      - CACTVS_HOME
+      - CACTVS_UID
+      - CACTVS_GID
+    command: ["/opt/cactvs/bin/cspy"]
+

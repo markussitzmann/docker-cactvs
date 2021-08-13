@@ -1,0 +1,6 @@
+gdbm
+django
+requests
+conda-pack
+
+
