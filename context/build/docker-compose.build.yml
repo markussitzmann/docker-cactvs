@@ -6,7 +6,7 @@ services:
     image: docker-cactvs-base:${CACTVS_VERSION}
     #container_name: docker-cactvs-container
     build:
-      context: build/base
+      context: base
       args:
         cactvs_package: ${CACTVS_PACKAGE}
     environment:
@@ -19,7 +19,7 @@ services:
     depends_on:
       - base
     build:
-      context: build/cactvs-conda
+      context: cactvs-conda
       args:
         build_tag: ${CACTVS_VERSION}
         conda_py: ${CONDA_PY}
@@ -36,7 +36,7 @@ services:
     depends_on:
       - base
     build:
-      context: build/cactvs
+      context: cactvs
       args:
         build_tag: ${CACTVS_VERSION}
         cactvs_version: ${CACTVS_VERSION}

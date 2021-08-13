@@ -16,6 +16,7 @@ fi
 export PYTHONPATH=/home/app:$PYTHONPATH
 
 #gosu app "$@"
+exec "$@"
 
-PGM="/opt/cactvs/cactvs3.4.8.18/lib/pycactvs"
-gosu app "$PGM" -obd "$@"
+#PGM="/opt/cactvs/cactvs3.4.8.18/lib/pycactvs"
+#gosu app "$PGM" -obd "$@"

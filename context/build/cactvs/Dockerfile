@@ -44,6 +44,8 @@ COPY --from=cactvs /opt/cactvs /opt/cactvs
 #COPY --from=cactvs /opt/cactvs/lib/$cactvs_version/lib/python3.8/lib-dynload  /opt/conda/lib/python3.8/lib-dynload
 
 
+
+
 #RUN /bin/bash -c "source activate cactvs" && \
 #    CONDA_PY=$conda_py conda install --freeze-installed --yes --file /opt/python/requirements.txt && \
 #    conda clean -afy && \

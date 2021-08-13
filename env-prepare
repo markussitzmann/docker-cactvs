@@ -9,4 +9,8 @@ cp cactvs.env .env
 sed -i -e "s/@CACTVS_UID/${CUID}/g" .env
 sed -i -e "s/@CACTVS_GID/${CGID}/g" .env
 
+cp .env context/build/
+cp .env context/app
+
+source .env
 
