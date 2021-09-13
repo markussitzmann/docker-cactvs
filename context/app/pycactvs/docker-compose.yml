@@ -4,7 +4,6 @@ services:
 
   cspy:
     image: docker-cactvs:${CACTVS_VERSION}
-    #container_name: docker-cactvs-container
     container_name: ${CACTVS_VERSION}
     volumes:
       - ${CACTVS_HOME}:/home/app
@@ -12,5 +11,8 @@ services:
       - CACTVS_HOME
       - CACTVS_UID
       - CACTVS_GID
+    entrypoint: [ "/home/app/docker-entrypoint.sh" ]
     command: ["/opt/cactvs/bin/cspy"]
+    working_dir: "/home/app"
+
 

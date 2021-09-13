@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e
+
+docker-compose run --rm cspy /opt/cactvs/bin/cspy "$@"
+
+

@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+
+./env-prepare
+source .env
+
+mkdir -p $CACTVS_HOME
+
+cp .env $CACTVS_HOME
+cp ./context/app/pycactvs/* $CACTVS_HOME

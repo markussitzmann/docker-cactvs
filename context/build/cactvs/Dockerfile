@@ -12,7 +12,9 @@ RUN apt-get --allow-releaseinfo-change update && apt-get -y --no-install-recomme
     libfontconfig \
     joe
 
-ENV PATH /opt/conda/bin:$PATH
+#ENV PATH /opt/conda/bin:$PATH
+ENV PATH /home/app:/opt/conda/bin:$PATH
+
 
 ENV TK_LIBRARY /opt/cactvs/lib/$cactvs_version/tk8.6
 ENV TCL_LIBRARY /opt/cactvs/lib/$cactvs_version/tcl8.6

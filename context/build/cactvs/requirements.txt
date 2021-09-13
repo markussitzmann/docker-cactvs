@@ -1,5 +1,4 @@
 django
 requests
-conda-pack
 
 

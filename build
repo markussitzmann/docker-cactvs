@@ -4,4 +4,4 @@ set -e
 ./env-prepare
 
 docker-compose -f context/build/docker-compose.build.yml build base cactvs
-docker-compose -f context/app/docker-compose.build.yml build pycactvs
+#docker-compose -f context/app/docker-compose.build.yml build pycactvs
