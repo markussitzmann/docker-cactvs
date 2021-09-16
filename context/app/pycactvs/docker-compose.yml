@@ -12,7 +12,7 @@ services:
       - CACTVS_UID
       - CACTVS_GID
     entrypoint: [ "/home/app/docker-entrypoint.sh" ]
-    command: ["/opt/cactvs/bin/cspy"]
+    #command: ["/opt/cactvs/bin/cspy"]
     working_dir: "/home/app"
 
 
