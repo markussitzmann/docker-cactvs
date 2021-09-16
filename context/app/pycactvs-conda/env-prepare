@@ -1,0 +1,22 @@
+#!/bin/bash
+set -e
+
+test -f .env && source .env
+
+CUID="$(id -u)"
+CGID="$(id -g)"
+
+cp cactvs.env .env
+
+declare -a files=('./.env' './cactvs.env')
+for f in "${files[@]}"; do
+    sed -i -e 's?@CACTVS_HOME?'`pwd`'?' $f
+
+    sed -i -e "s/@CACTVS_UID/${CUID}/g" $f
+    sed -i -e "s/@CACTVS_GID/${CGID}/g" $f
+    sed -i -e "s/@CACTVS_PACKAGE/${CACTVS_PACKAGE}/g" $f
+    sed -i -e "s/@CACTVS_VERSION/${CACTVS_VERSION}/g" $f
+
+    sed -i -e "s/@CONDA_PY/${CACTVS_PACKAGE}/g" $f
+    sed -i -e "s/@CONDA_PACKAGE/${CACTVS_VERSION}/g" $f
+done

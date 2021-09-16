@@ -4,7 +4,22 @@ set -e
 ./env-prepare
 source .env
 
+CWD=$(pwd)
+
 mkdir -p $CACTVS_HOME
 
-cp .env $CACTVS_HOME
-cp ./context/app/pycactvs/* $CACTVS_HOME
+#cp .env $CACTVS_HOME
+#cp -r ./context/app/pycactvs/* $CACTVS_HOME
+#cp -r ./context/app/pycactvs-conda/* $CACTVS_HOME
+
+cp -r ./context/app/pycactvs $CACTVS_HOME
+cd $CACTVS_HOME/pycactvs
+cp $CWD/.env .
+./init
+cd $CWD
+
+cp -r ./context/app/pycactvs-conda $CACTVS_HOME
+cd $CACTVS_HOME/pycactvs-conda
+cp $CWD/.env .
+./init
+cd $CWD
