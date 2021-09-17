@@ -21,7 +21,7 @@ ENV TCL_LIBRARY /opt/cactvs/lib/$cactvs_version/tcl8.6
 ENV TCLX_LIBRARY /opt/cactvs/lib/$cactvs_version/tclx8.4
 ENV BLT_LIBRARY /opt/cactvs/lib/$cactvs_version/blt3.0
 ENV TIX_LIBRARY /opt/cactvs/lib/$cactvs_version/tix8.4
-#OS="Linux5.8"
+ENV OS="Linux5.8"
 ENV CACTVS_DATA_DIRECTORY /opt/cactvs/lib/$cactvs_version
 ENV PATH /opt/cactvs/lib/$cactvs_version/lib:$CACTVS_DATA_DIRECTORY:$PATH
 ENV LD_LIBRARY_PATH /opt/cactvs/lib/$cactvs_version/lib:/opt/cactvs/lib/$cactvs_version/lib/ssl:$LD_LIBRARY_PATH
@@ -43,7 +43,7 @@ RUN CONDA_PY=$conda_py conda install --freeze-installed anaconda-client --yes &&
     CONDA_PY=$conda_py conda create --verbose --yes -n cactvs
 
 COPY --from=cactvs /opt/cactvs /opt/cactvs
-COPY --from=cactvs /opt/cactvs/lib/$cactvs_version/lib/python3.8/lib-dynload  /opt/conda/lib/python3.8/lib-dynload
+COPY --from=cactvs /opt/cactvs/lib/$cactvs_version/lib/python3.8/lib-dynload /opt/conda/lib/python3.8/lib-dynload
 
 
 RUN /bin/bash -c "source activate cactvs" && \
