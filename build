@@ -1,7 +1,10 @@
 #!/bin/bash
 set -e
 
+echo "------ build ------"
+
 ./env-prepare
 
 docker-compose -f context/build/docker-compose.build.yml build base cactvs
 docker-compose -f context/build/docker-compose.build.yml build cactvs-conda
+docker-compose -f context/build/docker-compose.build.yml build cactvs-conda-nginx

@@ -1,6 +1,13 @@
 #!/bin/bash
+set -e
 
-./env-prepare
+source .env
+CACTVS_HOME=$(pwd)
+cp app.template.env app.env
+echo "INNER 2 ------------> $CACTVS_HOME"
+source ./env-parse
+cp app.env .env
+
 
 #if [ -z $(docker network ls --filter name=^chembience_sphere$ --format="{{ .Name }}") ] ; then
 #     echo "Creating chembience sphere network"

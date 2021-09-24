@@ -1,0 +1,39 @@
+#!/bin/bash
+set -e
+
+echo "PWD $(pwd)"
+
+test -f .env && source .env
+
+CUID="$(id -u)"
+CGID="$(id -g)"
+
+#cp app.env .env
+
+echo "------ VLA $CACTVS_HOME : $CUID : $CGID"
+declare -a files=('./.env ./app.env')
+for f in "${files[@]}"; do
+    sed -i -e 's?@CACTVS_HOME?'${CACTVS_HOME}'?g' $f
+    sed -i -e "s/@CACTVS_UID/${CUID}/g" $f
+    sed -i -e "s/@CACTVS_GID/${CGID}/g" $f
+    sed -i -e "s/@CACTVS_PACKAGE/${CACTVS_PACKAGE}/g" $f
+    sed -i -e "s/@CACTVS_VERSION/${CACTVS_VERSION}/g" $f
+
+    sed -i -e 's?@APP_HOME?$'{APP_HOME}'?g' $f
+    sed -i -e "s/@APP_NAME/${APP_NAME}/g" $f
+    sed -i -e "s/@APP_VERSION/${APP_VERSION}/g" $f
+    sed -i -e "s/@APP_UID/${CUID}/g" $f
+    sed -i -e "s/@APP_GID/${CGID}/g" $f
+
+    sed -i -e "s/@LETSENCRYPT_HOST/${LETSENCRYPT_HOST}/g" $f
+    sed -i -e "s/@LETSENCRYPT_EMAIL/${LETSENCRYPT_EMAIL}/g" $f
+    sed -i -e "s/@LETSENCRYPT_TEST/${LETSENCRYPT_TEST}/g" $f
+
+    sed -i -e "s/@POSTGRES_PASSWORD/${POSTGRES_PASSWORD}/g" $f
+    sed -i -e "s/@POSTGRES_USER/${POSTGRES_USER}/g" $f
+    sed -i -e "s/@POSTGRES_HOST/${POSTGRES_HOST}/g" $f
+    sed -i -e "s/@POSTGRES_PORT/${POSTGRES_PORT}/g" $f
+
+    sed -i -e "s/@CONDA_PY/${CACTVS_PACKAGE}/g" $f
+    sed -i -e "s/@CONDA_PACKAGE/${CACTVS_VERSION}/g" $f
+done

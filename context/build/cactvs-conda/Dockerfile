@@ -36,7 +36,7 @@ RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
     rm $conda_package
 
 COPY requirements.txt /opt/python
-COPY docker-entrypoint.sh /docker-entrypoint.sh
+#COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 RUN CONDA_PY=$conda_py conda install --freeze-installed anaconda-client --yes && \
     CONDA_PY=$conda_py conda config --add channels conda-forge && \
@@ -54,4 +54,4 @@ RUN /bin/bash -c "source activate cactvs" && \
     find /opt/conda/ -follow -type f -name '*.js.map' -delete
 
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
+#ENTRYPOINT ["/docker-entrypoint.sh"]

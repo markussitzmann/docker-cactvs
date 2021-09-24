@@ -1,16 +1,24 @@
-#!/bin/bash
-set -e
-
-CUID="$(id -u)"
-CGID="$(id -g)"
-
-cp cactvs.env .env
-
-sed -i -e "s/@CACTVS_UID/${CUID}/g" .env
-sed -i -e "s/@CACTVS_GID/${CGID}/g" .env
-
-cp .env context/build/
-cp .env context/app
-
-source .env
-
+##!/bin/bash
+#set -e
+#
+#echo "------ env-prepare base ------"
+#
+##CUID="$(id -u)"
+##CGID="$(id -g)"
+#
+#source settings.env
+#
+#echo "1 >>> $CACTVS_HOME"
+#
+#cp app.template.env app.env
+#./context/share/env-parse
+#cp app.env .env
+##rm app.env
+#
+#echo "ENV PREPARE"
+#
+##cp app.env context/build/
+#
+#source .env
+#
+#echo "2 ... $CACTVS_HOME"

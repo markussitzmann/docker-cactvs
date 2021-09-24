@@ -21,7 +21,7 @@ ENV TCL_LIBRARY /opt/cactvs/lib/$cactvs_version/tcl8.6
 ENV TCLX_LIBRARY /opt/cactvs/lib/$cactvs_version/tclx8.4
 ENV BLT_LIBRARY /opt/cactvs/lib/$cactvs_version/blt3.0
 ENV TIX_LIBRARY /opt/cactvs/lib/$cactvs_version/tix8.4
-#OS="Linux5.8"
+ENV OS="Linux5.8"
 ENV CACTVS_DATA_DIRECTORY /opt/cactvs/lib/$cactvs_version
 ENV PATH /opt/cactvs/lib/$cactvs_version/lib:$CACTVS_DATA_DIRECTORY:$PATH
 ENV LD_LIBRARY_PATH /opt/cactvs/lib/$cactvs_version/lib:/opt/cactvs/lib/$cactvs_version/lib/ssl:$LD_LIBRARY_PATH
@@ -36,7 +36,7 @@ ENV LD_LIBRARY_PATH /opt/cactvs/lib/$cactvs_version/lib:/opt/cactvs/lib/$cactvs_
 #    rm $conda_package
 
 COPY requirements.txt /opt/python
-COPY docker-entrypoint.sh /docker-entrypoint.sh
+#COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 #RUN CONDA_PY=$conda_py conda install --freeze-installed anaconda-client --yes && \
 #    CONDA_PY=$conda_py conda config --add channels conda-forge && \
@@ -56,4 +56,4 @@ COPY --from=cactvs /opt/cactvs /opt/cactvs
 #    find /opt/conda/ -follow -type f -name '*.js.map' -delete
 
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
+#ENTRYPOINT ["/docker-entrypoint.sh"]
