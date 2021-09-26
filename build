@@ -3,8 +3,13 @@ set -e
 
 echo "------ build ------"
 
-./env-prepare
+./init
+source .env
+cp .env context/build
+
+
+#./env-prepare
 
 docker-compose -f context/build/docker-compose.build.yml build base cactvs
 docker-compose -f context/build/docker-compose.build.yml build cactvs-conda
-docker-compose -f context/build/docker-compose.build.yml build cactvs-conda-nginx
+docker-compose -f context/build/docker-compose.build.yml build cactvs-django-app-server

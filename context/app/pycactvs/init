@@ -1,10 +1,6 @@
 #!/bin/bash
+set -e
 
-source .env
-CACTVS_HOME=$(pwd)
-cp app.template.env app.env
-echo "INNER ------------> $CACTVS_HOME"
-source ./env-parse
 cp app.env .env
 
 #if [ -z $(docker network ls --filter name=^chembience_sphere$ --format="{{ .Name }}") ] ; then

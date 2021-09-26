@@ -2,8 +2,8 @@ version: '3.9'
 
 services:
 
-  django:
-    image: cactvs-django-nginx:${APP_VERSION}
+  app-server:
+    image: cactvs-django-app-server:${APP_VERSION}
     build:
       context: .
       args:

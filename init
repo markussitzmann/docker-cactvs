@@ -1,70 +1,69 @@
 #!/bin/bash
 set -e
 
-echo "------ init base ------"
-
-source settings.env
-cp settings.env .env
-
-####./env-prepare
-
-#source settings.env
-
-echo "1 >>> $CACTVS_HOME"
-
-cp app.template.env app.env
-./context/share/env-parse
-cp app.env .env
-#rm app.env
-
-#echo "ENV PREPARE"
-
-#cp app.env context/build/
-
-source .env
-
-echo "2 ... $CACTVS_HOME"
-
-
-#######
-
-
-source .env
-
-echo "0 >>> $CACTVS_HOME"
-
 CWD=$(pwd)
 
+echo "------ init base ------"
+
+cp settings.env .env
+source settings.env
+
 mkdir -p $CACTVS_HOME
+mkdir -p $APP_HOME
 
-echo "init pycactvs at ${CACTVS_HOME}"
-cp -r ./context/app/pycactvs $CACTVS_HOME
-cp -r ./context/share/* $CACTVS_HOME/pycactvs
-cd $CACTVS_HOME/pycactvs
-cp $CWD/.env .
-sed -i -e 's?@CACTVS_HOME?'${CACTVS_HOME}/pycactvs'?g' app.template.env
-sed -i -e 's?@APP_HOME?'${APP_HOME}'?g' app.template.env
-./init
-cd $CWD
+mkdir -p $CACTVS_HOME/pycactvs
+if [ -z "$(ls -A $CACTVS_HOME/pycactvs)" ]; then
+  echo "init pycactvs at ${CACTVS_HOME}"
+  cp -r ./context/app/pycactvs $CACTVS_HOME
+  cp -r ./context/share/* $CACTVS_HOME/pycactvs
+  cd $CACTVS_HOME/pycactvs
+  cp $CWD/.env .
+  sed -i -e 's?@CACTVS_HOME?'${CACTVS_HOME}/pycactvs'?g' app.template.env
+  sed -i -e 's?@APP_HOME?'${APP_HOME}'?g' app.template.env
+  cp app.template.env app.env
+  ./env-parse
+  ./init
+  cp app.env .env
+  rm app.template.env
+  cd $CWD
+else
+  echo "pycactvs directory isn't empty; skipping initializing content there"
+fi
 
-echo "BLAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1"
+mkdir -p $CACTVS_HOME/pycactvs-conda
+if [ -z "$(ls -A $CACTVS_HOME/pycactvs-conda)" ]; then
+  echo "init pycactvs-conda at ${CACTVS_HOME}"
+  cp -r ./context/app/pycactvs-conda $CACTVS_HOME
+  cp -r ./context/share/* $CACTVS_HOME/pycactvs-conda
+  cd $CACTVS_HOME/pycactvs-conda
+  cp $CWD/.env .
+  sed -i -e 's?@CACTVS_HOME?'${CACTVS_HOME}/pycactvs-conda'?g' app.template.env
+  sed -i -e 's?@APP_HOME?'${APP_HOME}'?g' app.template.env
+  cp app.template.env app.env
+  ./env-parse
+  ./init
+  cp app.env .env
+  rm app.template.env
+  cd $CWD
+else
+  echo "pycactvs conda directory isn't empty; skipping initializing content there"
+fi
 
-
-echo "init pycactvs-conda at ${CACTVS_HOME}"
-cp -r ./context/app/pycactvs-conda $CACTVS_HOME
-cp -r ./context/share/* $CACTVS_HOME/pycactvs-conda
-cd $CACTVS_HOME/pycactvs-conda
-cp $CWD/.env .
-sed -i -e 's?@CACTVS_HOME?'${CACTVS_HOME}/pycactvs-conda'?g' app.template.env
-sed -i -e 's?@APP_HOME?'${APP_HOME}'?g' app.template.env
-./init
-cd $CWD
-
-echo "BLAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 2"
-
-#echo "Init app at ${APP_HOME}"
-#cp -r ./context/app/pycactvs-django-nginx $APP_HOME
-#cp -r ./context/share/* $APP_HOME
-#cd $APP_HOME
-#./init
-#cd $CWD
+mkdir -p $APP_HOME
+if [ -z "$(ls -A $APP_HOME)" ]; then
+  echo "init cactvs django app server at ${APP_HOME}"
+  cp -r ./context/app/pycactvs-django-app-server/* $APP_HOME
+  cp -r ./context/share/* $APP_HOME
+  cd $APP_HOME
+  cp $CWD/.env .
+  sed -i -e 's?@CACTVS_HOME?'${CACTVS_HOME}/pycactvs-conda'?g' app.template.env
+  sed -i -e 's?@APP_HOME?'${APP_HOME}'?g' app.template.env
+  cp app.template.env app.env
+  ./env-parse
+  ./init
+  cp app.env .env
+  rm app.template.env
+  cd $CWD
+else
+  echo "app server home directory isn't empty; skipping initializing content there"
+fi

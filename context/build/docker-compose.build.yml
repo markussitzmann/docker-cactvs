@@ -30,15 +30,15 @@ services:
       - CACTVS_UID
       - CACTVS_GID
 
-  cactvs-conda-nginx:
-    image: docker-cactvs-conda-nginx:${CACTVS_VERSION}
+  cactvs-django-app-server:
+    image: cactvs-django-app-server:${APP_VERSION}
     #container_name: docker-cactvs-container
     depends_on:
       - base
     build:
-      context: cactvs-django-nginx
+      context: cactvs-django-app-server
       args:
-        build_tag: ${CACTVS_VERSION}
+        build_tag: ${APP_VERSION}
         conda_py: ${CONDA_PY}
         conda_package: ${CONDA_PACKAGE}
         cactvs_version: ${CACTVS_VERSION}
