@@ -7,6 +7,7 @@ echo "------ build ------"
 source .env
 cp .env context/build
 
+#cp -r ./context/pycactvs-djangp-app-server/nginx ./context/build/cactvs-django-app-server
 
 #./env-prepare
 

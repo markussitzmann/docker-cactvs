@@ -7,6 +7,9 @@ echo "------ init base ------"
 
 cp settings.env .env
 source settings.env
+cp ./context/share/app.template.env app.env
+./context/share/env-parse
+#cp app.env ./context/build/.env
 
 mkdir -p $CACTVS_HOME
 mkdir -p $APP_HOME

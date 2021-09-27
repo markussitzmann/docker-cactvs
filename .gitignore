@@ -5,6 +5,7 @@ tmp/*
 .idea/
 /static
 /media
+app.env
 .env
 
 
