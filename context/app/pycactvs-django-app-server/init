@@ -1,18 +1,13 @@
 #!/bin/bash
 
+scp app.env .env
 
-source .env
-NETWORK_NAME=${APP_NAME}-backend
-if [ -z $(docker network ls --filter name=^${NETWORK_NAME}$ --format="{{ .Name }}") ] ; then
-     echo "Creating app backend network $NETWORK_NAME"
-     docker network create ${NETWORK_NAME} ;
+if [ -z $(docker network ls --filter name=^${APP_NAME}-backend$ --format="{{ .Name }}") ] ; then
+     echo "dreating Docker network"
+     docker network create cactvs-app-backend ;
 fi
-#if [ -z $(docker network ls --filter name=^chembience_sphere$ --format="{{ .Name }}") ] ; then
-#     echo "Creating chembience sphere network"
-#     docker network create chembience_sphere ;
-#fi
 
-echo "App init done."
+echo "Done."
 
 
 exit 0

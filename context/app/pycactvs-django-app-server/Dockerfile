@@ -1,5 +1,5 @@
 ARG build_tag
-FROM docker-cactvs-conda:$build_tag
+FROM cactvs-django-app-server:$build_tag
 ARG conda_py
 
 LABEL maintainer="markus.sitzmann@gmail.com "

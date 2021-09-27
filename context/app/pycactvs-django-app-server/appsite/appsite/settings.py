@@ -10,8 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
-import os, sys
-sys.path.append('/share')
+import os
+import sys
+
+#sys.path.append('/share')
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -31,12 +33,14 @@ ALLOWED_HOSTS = os.environ['APP_VIRTUAL_HOSTNAME'].split(",")
 # Application definition
 
 INSTALLED_APPS = [
+    'simple',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
 ]
 
 MIDDLEWARE = [

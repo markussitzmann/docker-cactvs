@@ -70,3 +70,5 @@ if [ -z "$(ls -A $APP_HOME)" ]; then
 else
   echo "app server home directory isn't empty; skipping initializing content there"
 fi
+
+
