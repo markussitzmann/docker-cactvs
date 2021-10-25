@@ -6,7 +6,7 @@ if ! id "app" >/dev/null 2>&1; then
     useradd --shell /bin/bash -u $CACTVS_UID -g $CACTVS_GID -o -c "" -M app
 fi
 
-PGM="python"
+PGM="python -i /opt/load_cactvs.py"
 #PGM="bash"
 
 echo $PGM

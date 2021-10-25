@@ -26,8 +26,6 @@ ENV CACTVS_DATA_DIRECTORY /opt/cactvs/lib/$cactvs_version
 ENV PATH /opt/cactvs/lib/$cactvs_version/lib:$CACTVS_DATA_DIRECTORY:$PATH
 ENV LD_LIBRARY_PATH /opt/cactvs/lib/$cactvs_version/lib:/opt/cactvs/lib/$cactvs_version/lib/ssl:$LD_LIBRARY_PATH
 
-
-
 RUN mkdir -p /opt/python
 
 RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
@@ -36,6 +34,8 @@ RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
     rm $conda_package
 
 COPY requirements.txt /opt/python
+#COPY ../../app/pycactvs-conda/load_cactvs.py /opt/
+
 #COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 RUN CONDA_PY=$conda_py conda install --freeze-installed anaconda-client --yes && \
@@ -44,6 +44,11 @@ RUN CONDA_PY=$conda_py conda install --freeze-installed anaconda-client --yes &&
 
 COPY --from=cactvs /opt/cactvs /opt/cactvs
 COPY --from=cactvs /opt/cactvs/lib/$cactvs_version/lib/python3.8/lib-dynload /opt/conda/lib/python3.8/lib-dynload
+COPY --from=cactvs /opt/cactvs/lib/$cactvs_version/lib/libgdbm.so.4 \
+    /opt/cactvs/lib/$cactvs_version/lib/libgdbm.so \
+    /opt/cactvs/lib/$cactvs_version/lib/libgdbm.so.4.0.0 \
+    /opt/cactvs/lib/$cactvs_version/lib/libCgdbm.so \
+    /opt/conda/lib/
 
 
 RUN /bin/bash -c "source activate cactvs" && \
@@ -53,5 +58,3 @@ RUN /bin/bash -c "source activate cactvs" && \
     find /opt/conda/ -follow -type f -name '*.pyc' -delete && \
     find /opt/conda/ -follow -type f -name '*.js.map' -delete
 
-
-#ENTRYPOINT ["/docker-entrypoint.sh"]

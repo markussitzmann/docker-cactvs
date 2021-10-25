@@ -6,9 +6,9 @@ Exploratory project for packaging [CACTVS](https://xemistry.com) into a Docker c
 Requirements
 ------------
 
-Please have at least [Docker CE 20.10](<https://docs.docker.com/engine/installation/>) and [Docker Compose 1.19](<https://docs.docker.com/compose/install/>) installed on your system.
+Please have at least [Docker CE 20.10](<https://docs.docker.com/engine/installation/>) and [Docker Compose 1.29](<https://docs.docker.com/compose/install/>) installed on your system.
 
-Requirements
+Installation
 ------------
 
 Clone the repository::

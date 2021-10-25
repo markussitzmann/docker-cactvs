@@ -7,10 +7,6 @@ echo "------ build ------"
 source .env
 cp .env context/build
 
-#cp -r ./context/pycactvs-djangp-app-server/nginx ./context/build/cactvs-django-app-server
-
-#./env-prepare
-
 docker-compose -f context/build/docker-compose.build.yml build base cactvs
 docker-compose -f context/build/docker-compose.build.yml build cactvs-conda
 docker-compose -f context/build/docker-compose.build.yml build cactvs-django-app-server

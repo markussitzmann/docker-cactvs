@@ -1,13 +1,16 @@
 #!/bin/bash
 
-scp app.env .env
+cp app.env .env
+
+source .env
+docker tag cactvs-django-app-server:1.0 $APP_NAME:$APP_VERSION
 
 if [ -z $(docker network ls --filter name=^${APP_NAME}-backend$ --format="{{ .Name }}") ] ; then
-     echo "dreating Docker network"
+     echo "creating Docker network"
      docker network create cactvs-app-backend ;
 fi
 
-echo "Done."
+echo "done"
 
 
 exit 0

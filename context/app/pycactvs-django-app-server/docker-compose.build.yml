@@ -3,7 +3,7 @@ version: '3.9'
 services:
 
   app-server:
-    image: cactvs-django-app-server:${APP_VERSION}
+    image: ${APP_NAME}:${APP_VERSION}
     build:
       context: .
       args:
