@@ -7,7 +7,9 @@ docker tag cactvs-django-app-server:1.0 $APP_NAME:$APP_VERSION
 
 if [ -z $(docker network ls --filter name=^${APP_NAME}-backend$ --format="{{ .Name }}") ] ; then
      echo "creating Docker network"
-     docker network create cactvs-app-backend ;
+     docker network create ${APP_NAME}-backend ;
+else
+    echo "App Docker network exists"
 fi
 
 echo "done"
