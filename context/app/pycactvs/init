@@ -3,6 +3,4 @@ set -e
 
 cp app.env .env
 
-echo "Done."
-
 exit 0

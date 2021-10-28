@@ -3,4 +3,4 @@ set -e
 
 source .env
 
-docker-compose run cspy "$@"
+docker-compose run --rm cspy "$@"

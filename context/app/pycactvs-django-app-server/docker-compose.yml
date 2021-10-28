@@ -26,7 +26,7 @@ services:
       - LETSENCRYPT_HOST
       - LETSENCRYPT_EMAIL
       - LETSENCRYPT_TEST
-   depends_on:
+    depends_on:
       - postgres
     entrypoint: ["/home/app/docker-entrypoint.sh"]
     command: ["/home/nginx/run.sh"]

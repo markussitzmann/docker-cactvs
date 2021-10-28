@@ -11,8 +11,8 @@ services:
       - CACTVS_HOME
       - CACTVS_UID
       - CACTVS_GID
+      - PYTHONSTARTUP=/home/app/cactvsenv/__init__.py
     entrypoint: [ "/home/app/docker-entrypoint.sh" ]
-    #command: ["/opt/cactvs/bin/cspy"]
     working_dir: "/home/app"
 
 
