@@ -22,7 +22,7 @@ ENV TCLX_LIBRARY /opt/cactvs/lib/$cactvs_version/tclx8.4
 ENV BLT_LIBRARY /opt/cactvs/lib/$cactvs_version/blt3.0
 ENV TIX_LIBRARY /opt/cactvs/lib/$cactvs_version/tix8.4
 ENV OS="Linux5.8"
-ENV CACTVS_DATA_DIRECTORY /opt/cactvs/lib/$cactvs_version
+ENV CACTVS_DATA_DIRECTORY /opt/cactvs/lib/$cactvs_version:/home/app/cactvsenv/prop
 ENV PATH /opt/cactvs/lib/$cactvs_version/lib:$CACTVS_DATA_DIRECTORY:$PATH
 ENV LD_LIBRARY_PATH /opt/cactvs/lib/$cactvs_version/lib:/opt/cactvs/lib/$cactvs_version/lib/ssl:$LD_LIBRARY_PATH
 

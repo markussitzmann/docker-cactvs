@@ -28,12 +28,10 @@ NOTE: The build includes the download of the CACTVS Chemoinformatics Toolkit Aca
 software package (there will be no prebuild Docker images made available from public Docker image repositories, it
 has to be build locally).
  
-If the build has finished, initialize the runtime environment by using
-
-    ./init
-
-This will create a directory named `~/prickly`. If you want to change the location of this directory, adapt variable
-`CACTVS_HOME` in file `cactvs.env` accordingly.
+If the build of all containers has been finished, also a set of runtime environments have been initialized which will be
+described in the following. All of them can be found as subdirectories of the directory `~/prickly`. If you want to 
+change the name or location of this directory, adapt variable `CACTVS_HOME` in file `cactvs.env` before the build 
+accordingly.
 
 If you change the directory to `~/prickly` and list its content
 

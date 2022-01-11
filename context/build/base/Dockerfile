@@ -12,7 +12,10 @@ RUN apt-get --allow-releaseinfo-change update && apt-get -y --no-install-recomme
 RUN mkdir -p /opt/download
 WORKDIR /opt/download
 
-RUN curl -L -o cactvs.tar.gz https://xemistry.com/academic/$cactvs_package \
- && tar xzvf cactvs.tar.gz \
- && ./installme /opt/cactvs
+#RUN curl -L -o cactvs.tar.gz https://xemistry.com/academic/$cactvs_package \
+# && tar xzvf cactvs.tar.gz \
+# && ./installme /opt/cactvs
 
+COPY $cactvs_package .
+RUN tar xzvf $cactvs_package \
+ && ./installme /opt/cactvs

@@ -7,5 +7,4 @@ tmp/*
 /media
 app.env
 .env
-
-
+*.tar.gz
