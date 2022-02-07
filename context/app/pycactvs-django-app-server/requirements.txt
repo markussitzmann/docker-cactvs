@@ -1,6 +1,6 @@
 psycopg2-binary
 requests
-django
+django>=4
 djangorestframework
 django-extensions
-django-dbbackup>=3
+#django-dbbackup>=3
