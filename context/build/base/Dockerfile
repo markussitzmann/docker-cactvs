@@ -1,4 +1,4 @@
-FROM debian:buster-slim
+FROM debian:bullseye
 ARG cactvs_package
 LABEL maintainer="markus.sitzmann@gmail.com "
 

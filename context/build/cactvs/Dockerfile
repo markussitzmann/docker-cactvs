@@ -1,6 +1,6 @@
 ARG build_tag
 FROM docker-cactvs-base:$build_tag as cactvs
-FROM debian:buster-slim
+FROM debian:bullseye
 ARG cactvs_version
 
 LABEL maintainer="markus.sitzmann@gmail.com "

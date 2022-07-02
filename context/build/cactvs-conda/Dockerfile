@@ -1,6 +1,6 @@
 ARG build_tag
 FROM docker-cactvs-base:$build_tag as cactvs
-FROM debian:buster-slim
+FROM debian:bullseye
 ARG conda_py
 ARG conda_package
 ARG cactvs_version
