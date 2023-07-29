@@ -8,7 +8,6 @@ if ! id "app" >/dev/null 2>&1; then
     useradd --shell /bin/bash -u $CACTVS_UID -g $CACTVS_GID -o -c "" -M app
 fi
 
-PGM="/opt/cactvs/lib/${CACTVS_VERSION}/pycactvs"
+PGM="/opt/cactvs/lib/${CACTVS_VERSION}/lib/pycactvs"
 
 gosu app "$PGM" -obd "$@"
-
