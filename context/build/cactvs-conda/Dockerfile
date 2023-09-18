@@ -48,6 +48,8 @@ COPY --from=cactvs /opt/cactvs/lib/$cactvs_version/lib/libgdbm.so.4 \
     /opt/conda/lib/
 
 
+COPY ficuslib.tcl /opt/cactvs/lib/$cactvs_version/propdata/ficuslib.tcl
+
 RUN /bin/bash -c "source activate cactvs" && \
     CONDA_PY=$conda_py conda install --freeze-installed --yes --file /opt/python/requirements.txt && \
     conda clean -afy && \
