@@ -1,4 +1,4 @@
-version: '3.9'
+#version: '3.9'
 
 services:
 
@@ -49,7 +49,7 @@ volumes:
 
 networks:
   app_network:
-    external:
-      name: ${APP_NAME}-backend
+    external: true
+    name: ${APP_NAME}-backend
 
 

@@ -7,6 +7,6 @@ echo "------ build ------"
 source .env
 cp .env context/build
 
-docker-compose -f context/build/docker-compose.build.yml build base cactvs
-docker-compose -f context/build/docker-compose.build.yml build cactvs-conda
-docker-compose -f context/build/docker-compose.build.yml build cactvs-django-app-server
+docker compose -f context/build/docker-compose.build.yml build base cactvs
+docker compose -f context/build/docker-compose.build.yml build cactvs-conda
+docker compose -f context/build/docker-compose.build.yml build cactvs-django-app-server
