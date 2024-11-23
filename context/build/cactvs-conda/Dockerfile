@@ -56,13 +56,13 @@ RUN /bin/bash -c "source activate cactvs" && \
 
 #COPY /opt/cactvs/lib/$cactvs_version/lib/python3.10/lib-dynload/_ctypes.cpython-310-x86_64-linux-gnu.so /
 
-COPY --from=cactvs /opt/cactvs /opt/cactvs
-COPY --from=cactvs /opt/cactvs/lib/$cactvs_version/lib/python3.10/lib-dynload /opt/conda/lib/python3.10/lib-dynload
-COPY --from=cactvs /opt/cactvs/lib/$cactvs_version/lib/libgdbm.so.4 \
-    /opt/cactvs/lib/$cactvs_version/lib/libgdbm.so \
-    /opt/cactvs/lib/$cactvs_version/lib/libgdbm.so.4.0.0 \
-    /opt/cactvs/lib/$cactvs_version/lib/libCgdbm.so \
-    /opt/conda/lib/
+#COPY --from=cactvs /opt/cactvs /opt/cactvs
+#COPY --from=cactvs /opt/cactvs/lib/$cactvs_version/lib/python3.10/lib-dynload /opt/conda/lib/python3.10/lib-dynload
+#COPY --from=cactvs /opt/cactvs/lib/$cactvs_version/lib/libgdbm.so.4 \
+#    /opt/cactvs/lib/$cactvs_version/lib/libgdbm.so \
+#    /opt/cactvs/lib/$cactvs_version/lib/libgdbm.so.4.0.0 \
+#    /opt/cactvs/lib/$cactvs_version/lib/libCgdbm.so \
+#    /opt/conda/lib/
 #
 #
 COPY ficuslib.tcl /opt/cactvs/lib/$cactvs_version/propdata/ficuslib.tcl
@@ -75,4 +75,13 @@ RUN /bin/bash -c "source activate cactvs" && \
     find /opt/conda/ -follow -type f -name '*.a' -delete && \
     find /opt/conda/ -follow -type f -name '*.pyc' -delete && \
     find /opt/conda/ -follow -type f -name '*.js.map' -delete
+
+
+COPY --from=cactvs /opt/cactvs /opt/cactvs
+COPY --from=cactvs /opt/cactvs/lib/$cactvs_version/lib/python3.10/lib-dynload /opt/conda/lib/python3.10/lib-dynload
+COPY --from=cactvs /opt/cactvs/lib/$cactvs_version/lib/libgdbm.so.4 \
+    /opt/cactvs/lib/$cactvs_version/lib/libgdbm.so \
+    /opt/cactvs/lib/$cactvs_version/lib/libgdbm.so.4.0.0 \
+    /opt/cactvs/lib/$cactvs_version/lib/libCgdbm.so \
+    /opt/conda/lib/
 
