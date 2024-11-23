@@ -10,7 +10,7 @@ RUN mkdir -p /opt/django /home/nginx
 COPY requirements.txt /opt/django
 
 RUN /bin/bash -c "source activate cactvs" && \
-    CONDA_PY=$conda_py conda install --freeze-installed --yes --file /opt/django/requirements.txt && \
+    CONDA_PY=$conda_py conda install --yes --file /opt/django/requirements.txt && \
     conda clean -afy && \
     find /opt/conda/ -follow -type f -name '*.a' -delete && \
     find /opt/conda/ -follow -type f -name '*.pyc' -delete && \

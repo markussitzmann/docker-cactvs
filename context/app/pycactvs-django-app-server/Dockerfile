@@ -9,5 +9,5 @@ ENV PATH /opt/conda/bin:$PATH
 COPY requirements.txt /
 
 RUN /bin/bash -c "source activate cactvs" && \
-    CONDA_PY=$conda_py pip install -r /requirements.txt
+    CONDA_PY=$conda_py pip install --file /requirements.txt
 
