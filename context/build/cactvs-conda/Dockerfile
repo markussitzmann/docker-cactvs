@@ -39,6 +39,12 @@ RUN CONDA_PY=$conda_py conda install --freeze-installed anaconda-client --yes &&
     CONDA_PY=$conda_py conda config --add channels conda-forge && \
     CONDA_PY=$conda_py conda create --verbose --yes -n cactvs
 
+#RUN conda create -n test_env python=3.8 --yes
+#RUN /bin/bash -c "source activate test_env"
+#RUN conda install --file /opt/python/requirements.txt --yes
+
+
+
 COPY --from=cactvs /opt/cactvs /opt/cactvs
 COPY --from=cactvs /opt/cactvs/lib/$cactvs_version/lib/python3.8/lib-dynload /opt/conda/lib/python3.8/lib-dynload
 COPY --from=cactvs /opt/cactvs/lib/$cactvs_version/lib/libgdbm.so.4 \
@@ -56,4 +62,3 @@ RUN /bin/bash -c "source activate cactvs" && \
     find /opt/conda/ -follow -type f -name '*.a' -delete && \
     find /opt/conda/ -follow -type f -name '*.pyc' -delete && \
     find /opt/conda/ -follow -type f -name '*.js.map' -delete
-
